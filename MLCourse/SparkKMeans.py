@@ -1,7 +1,7 @@
 from pyspark.mllib.clustering import KMeans
 from numpy import array, random
 from math import sqrt
-from pyspark import SparkConf, SparkContext
+from pyspark import SparkConf, SparkContext #we will need those pretty much anytime
 from sklearn.preprocessing import scale
 
 K = 5
