@@ -45,6 +45,7 @@ print(results)
 
 
 # Evaluate clustering by computing Within Set Sum of Squared Errors
+#In simple words find how close each point is from their center
 def error(point):
     center = clusters.centers[clusters.predict(point)]
     return sqrt(sum([x**2 for x in (point - center)]))
