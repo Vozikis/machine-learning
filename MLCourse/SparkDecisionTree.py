@@ -40,9 +40,9 @@ def createLabeledPoints(fields):
         previousEmployers, educationLevel, topTier, interned]))
 
 #Load up our CSV file, and filter out the header line with the column names
-rawData = sc.textFile("PastHires.csv")
-header = rawData.first()
-rawData = rawData.filter(lambda x:x != header)
+rawData = sc.textFile("PastHires.csv") #loads all the data in an RDD called rawData
+header = rawData.first() #extract the first raw
+rawData = rawData.filter(lambda x:x != header) #remove the first header raw
 
 # Split each line into a list based on the comma delimiters
 csvData = rawData.map(lambda x: x.split(","))
@@ -55,7 +55,7 @@ trainingData = csvData.map(createLabeledPoints)
 # he or she did not do an internship. You could of course load up a whole
 # huge RDD of test candidates from disk, too.
 testCandidates = [ array([10, 1, 3, 1, 0, 0])]
-testData = sc.parallelize(testCandidates)
+testData = sc.parallelize(testCandidates) #Create RDD to predict if the person gets hired 
 
 # Train our DecisionTree classifier using our data set
 model = DecisionTree.trainClassifier(trainingData, numClasses=2,
