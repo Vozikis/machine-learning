@@ -9,7 +9,7 @@ sc = SparkContext(conf = conf)
 # Load documents (one per line).
 rawData = sc.textFile("subset-small.tsv")
 fields = rawData.map(lambda x: x.split("\t"))
-documents = fields.map(lambda x: x[3].split(" "))
+documents = fields.map(lambda x: x[3].split(" "))#split the body of wiki article in words.
 
 # Store the document names for later:
 documentNames = fields.map(lambda x: x[1])
