@@ -14,7 +14,7 @@ sc = SparkContext(conf = conf)
 def createClusteredData(N, k):
     random.seed(10)
     pointsPerCluster = float(N)/k
-     X = []
+    X = []
     for i in range (k):
         incomeCentroid = random.uniform(20000.0, 200000.0)
         ageCentroid = random.uniform(20.0, 70.0)
