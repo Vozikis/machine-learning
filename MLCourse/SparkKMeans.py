@@ -33,7 +33,7 @@ clusters = KMeans.train(data, K, maxIterations=10,
         initializationMode="random")
 
 # Print out the cluster assignments
-resultRDD = data.map(lambda point: clusters.predict(point)).cache()
+resultRDD = data.map(lambda point: clusters.predict(point)).cache() #cache first when you are going to run more than one action
 
 print("Counts by value:")
 counts = resultRDD.countByValue()
