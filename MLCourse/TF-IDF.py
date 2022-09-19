@@ -22,7 +22,7 @@ tf = hashingTF.transform(documents)
 # where each value maps to the term frequency of each unique hash value.
 
 # Let's compute the TF*IDF of each term in each document:
-tf.cache()
+tf.cache() #caching because we will use more than once
 idf = IDF(minDocFreq=2).fit(tf)
 tfidf = idf.transform(tf)
 
