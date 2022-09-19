@@ -8,11 +8,11 @@ from pyspark.ml.linalg import Vectors
 if __name__ == "__main__":
 
     # Create a SparkSession (Note, the config section is only for Windows!)
-    spark = SparkSession.builder.appName("LinearRegression").getOrCreate()
+    spark = SparkSession.builder.appName("LinearRegression").getOrCreate() #in case of crash it restarts from previous state
 
     # Load up our data and convert it to the format MLLib expects.
     inputLines = spark.sparkContext.textFile("regression.txt")
-    data = inputLines.map(lambda x: x.split(",")).map(lambda x: (float(x[0]), Vectors.dense(float(x[1]))))
+    data = inputLines.map(lambda x: x.split(",")).map(lambda x: (float(x[0]), Vectors.dense(float(x[1])))) #linear regression model requires a vector there
 
     # Convert this RDD to a DataFrame
     colNames = ["label", "features"]
